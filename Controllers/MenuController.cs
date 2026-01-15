@@ -8,5 +8,9 @@ namespace FoodTruck.Controllers
         {
             return View();
         }
+        public IActionResult Menu()
+        {
+            return View();
+        }
     }
 }
