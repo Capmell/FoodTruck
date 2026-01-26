@@ -1,3 +1,7 @@
+
+
+using FoodTruck.Models;
+using Microsoft.EntityFrameworkCore;
 namespace FoodTruck
 {
     public class Program
@@ -8,6 +12,9 @@ namespace FoodTruck
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<FoodTruckContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("FoodTruckConnection")));
 
             var app = builder.Build();
 

@@ -4,6 +4,7 @@ namespace FoodTruck.Controllers
 {
     public class MenuController : Controller
     {
+        private readonly FoodTruckContext _context;
         public IActionResult Index()
         {
             return View();
