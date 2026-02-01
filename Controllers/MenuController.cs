@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using FoodTruck.ViewModels;
 
 namespace FoodTruck.Controllers
 {
@@ -11,7 +12,19 @@ namespace FoodTruck.Controllers
         }
         public IActionResult Menu()
         {
-            return View();
+            var Foods = _context.FoodTruck.ToList();
+
+            var vm = new FoodTruckViewModel
+            {
+                Food = Foods,
+                PageTitle = "Available items",
+                TotalCount = Foods.Count,
+                EmptyMessage = "No items are currently available."
+            };
+
+            return View(vm);
         }
+    
+
     }
 }

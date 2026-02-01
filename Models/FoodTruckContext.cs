@@ -5,7 +5,7 @@ namespace FoodTruck.Models
 {
     public class FoodTruckContext : DbContext
     {
-        public BookBarnContext(DbContextOptions<FoodTruckContext> options)
+        public FoodTruckContext(DbContextOptions<FoodTruckContext> options)
             : base(options)
         {
         }

@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @model FoodTruck.ViewModels.MenuItemViewModel
+
+    <h1>@Model.PageTitle</h1>
+
+    <p>Total food: <strong>@Model.TotalCount</strong></p>
+
+    @if (Model.food == null || Model.food.Count == 0)
+    {
+        <p><em>@Model.EmptyMessage</em></p>
+    }
+    else
+    {
+        @foreach (var foods in Model.Books)
+        {
+            <partial name="_MenuItemCard" model="foods" />
+        }
+    }
+}
