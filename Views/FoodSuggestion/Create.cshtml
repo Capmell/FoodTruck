@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    if (!ModelState.IsValid) { return View(model); }
+    @model FoodTruck.Models.FoodSuggestionModel
+
+    <h1>Suggest a Book</h1>
+
+    <form asp-action="Create" method="post">
+
+        <div asp-validation-summary="All"></div>
+
+        <div>
+            <label asp-for="Id"></label>
+            <input asp-for="Id" />
+            <span asp-validation-for="Id"></span>
+        </div>
+
+        <div>
+            <label asp-for="Town"></label>
+            <input asp-for="Town" />
+            <span asp-validation-for="Town"></span>
+        </div>
+
+        <div>
+            <label asp-for="Street"></label>
+            <input asp-for="Street" />
+            <span asp-validation-for="Street"></span>
+        </div>
+
+        <div>
+            <label asp-for="EmailAddress"></label>
+            <textarea asp-for="EmeilAddress"></textarea>
+            <span asp-validation-for="EmailAddress"></span>
+        </div>
+
+        <button type="submit">Submit Suggestion</button>
+    </form>
+    <div asp-validation-summary="All"></div>
+    <span asp-validation-for="Title"></span>
+  
+}
