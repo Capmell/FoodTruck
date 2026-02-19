@@ -13,13 +13,13 @@ namespace FoodTruck.Controllers
         }
         public IActionResult Menu()
         {
-            var Foods = _context.FoodTruck.ToList();
+            var Foods = _context.MenuItem.ToList();
 
-            var vm = new FoodTruck
+            var vm = new MenuItem
             {
-                Food = Foods,
-                PageTitle = "Available items",
-                TotalCount = Foods.Count,
+                Food = "available food",
+                Drink = "Available drinks",
+                Id = Foods.Count,
                 EmptyMessage = "No items are currently available."
             };
 

@@ -5,7 +5,7 @@
     
     @model FoodTruck.Models.FoodSuggestionModel
 
-    <h1>Suggest a Book</h1>
+    <h1>Suggest a location</h1>
 
     <form asp-action="Create" method="post">
 
@@ -38,6 +38,6 @@
         <button type="submit">Submit Suggestion</button>
     </form>
     <div asp-validation-summary="All"></div>
-    <span asp-validation-for="Title"></span>
+    
   
 }

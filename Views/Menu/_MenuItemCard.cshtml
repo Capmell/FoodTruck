@@ -8,13 +8,13 @@
 
     <p>Total food: <strong>@Model.TotalCount</strong></p>
 
-    @if (Model.food == null || Model.food.Count == 0)
+    @if (Model.Menu == null || Model.Menu.Count == 0)
     {
         <p><em>@Model.EmptyMessage</em></p>
     }
     else
     {
-        @foreach (var foods in Model.Books)
+        @foreach (var foods in Model.Menu)
         {
             <partial name="_MenuItemCard" model="foods" />
         }

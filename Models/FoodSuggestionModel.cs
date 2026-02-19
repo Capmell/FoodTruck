@@ -6,8 +6,7 @@ namespace FoodTruck.Models
 {
     public class FoodSuggestionModel
     {
-        public class foodSuggestionModel
-        {
+       
             [Required]
             [StringLength(80)]
             public string Id { get; set; }
@@ -21,6 +20,6 @@ namespace FoodTruck.Models
 
             [StringLength(300)]
             public string EmailAddress { get; set; }
-        }
+        
     }
 }
