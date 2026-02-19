@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using FoodTruck.Models;
 
-namespace BookBarn.ViewModels
+namespace FoodTruck.ViewModels
 {
     public class MenuItemViewModel
     {
-        public List<Menu> Menu { get; set; } = new();
+        public List<MenuItem> Menu { get; set; } = new();
         public string PageTitle { get; set; } = "Menu Items";
         public int TotalCount { get; set; }
         public string EmptyMessage { get; set; } = "No items found.";

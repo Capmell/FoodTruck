@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    if (!ModelState.IsValid) { return View(model); }
+    
     @model FoodTruck.Models.FoodSuggestionModel
 
     <h1>Suggest a Book</h1>
@@ -31,7 +31,7 @@
 
         <div>
             <label asp-for="EmailAddress"></label>
-            <textarea asp-for="EmeilAddress"></textarea>
+            <textarea asp-for="EmailAddress"></textarea>
             <span asp-validation-for="EmailAddress"></span>
         </div>
 

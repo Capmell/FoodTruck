@@ -15,9 +15,9 @@ namespace FoodTruck.Controllers
                 return View(model);
             }
 
-            // Success logic will be expanded later in the course (CRUD + database persistence).
-            // For now, we simply redirect to a success page (PRG).
+           
             return RedirectToAction("ThankYou");
+            if (!ModelState.IsValid) { return View(model); }
         }
 
         // GET: /Suggestions/ThankYou
@@ -25,5 +25,7 @@ namespace FoodTruck.Controllers
         {
             return View();
         }
+     
     }
 }
+

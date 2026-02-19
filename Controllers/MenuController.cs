@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using FoodTruck.ViewModels;
+using FoodTruck.Models;
 
 namespace FoodTruck.Controllers
 {
@@ -14,7 +15,7 @@ namespace FoodTruck.Controllers
         {
             var Foods = _context.FoodTruck.ToList();
 
-            var vm = new FoodTruckViewModel
+            var vm = new FoodTruck
             {
                 Food = Foods,
                 PageTitle = "Available items",

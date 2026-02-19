@@ -20,7 +20,7 @@ namespace FoodTruck.Models
             public int Street { get; set; }
 
             [StringLength(300)]
-            public string EmeilAddress { get; set; }
+            public string EmailAddress { get; set; }
         }
     }
 }
