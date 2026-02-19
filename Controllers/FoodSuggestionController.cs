@@ -15,9 +15,9 @@ namespace FoodTruck.Controllers
                 return View(model);
             }
 
-           
-            return RedirectToAction("ThankYou");
             if (!ModelState.IsValid) { return View(model); }
+            return RedirectToAction("ThankYou");
+         
         }
 
         // GET: /Suggestions/ThankYou
