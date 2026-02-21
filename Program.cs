@@ -2,6 +2,8 @@
 
 using FoodTruck.Models;
 using Microsoft.EntityFrameworkCore;
+//using FoodTruck.Data;
+using Microsoft.AspNetCore.Identity;
 namespace FoodTruck
 {
     public class Program
@@ -15,6 +17,8 @@ namespace FoodTruck
 
             builder.Services.AddDbContext<FoodTruckContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FoodTruckConnection")));
+
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<FoodTruckContext>();
 
             var app = builder.Build();
 

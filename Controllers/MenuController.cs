@@ -19,7 +19,7 @@ namespace FoodTruck.Controllers
             {
                 Food = "available food",
                 Drink = "Available drinks",
-                Id = Foods.Count,
+                id = Foods.Count,
                 EmptyMessage = "No items are currently available."
             };
 
