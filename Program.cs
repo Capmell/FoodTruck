@@ -17,17 +17,15 @@ namespace FoodTruck
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<FoodTruckContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("FoodTruckConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BookBarnConnection")));
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<FoodTruckContext>();
 
             var app = builder.Build();
 
-            builder.Services.AddEndpointsApiExplorer();
-
             builder.Services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new() { Title = "BookBarn API", Version = "v1" });
+                c.SwaggerDoc("v1", new() { Title = "FoodTruck API", Version = "v1" });
 
                 // Only include API routes (ignore MVC view controllers)
                 c.DocInclusionPredicate((docName, apiDesc) =>
@@ -40,6 +38,10 @@ namespace FoodTruck
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            builder.Services.AddEndpointsApiExplorer();
+
+           
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
