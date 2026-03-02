@@ -1,52 +1,41 @@
-﻿using FoodTruck.Models;
+﻿
+using FoodTruck.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FoodTruck.Controllers
 {
-    public class MenuApiController : Controller
+    [ApiController]
+    [Route("api/Menu")]
+    public class MenuApiController : ControllerBase
     {
-        [ApiController]
-        [Route("api/menu")]
-        public class menuApiController : ControllerBase
+        private readonly IFoodService _foodService;
+
+        public MenuApiController(IFoodService foodservice)
         {
-            private readonly FoodTruckContext _context;
+            _foodService = foodservice;
+        }
 
-            public menuApiController(FoodTruckContext context)
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var foods = await _foodService.GetAllAsync();
+            return Ok(foods);
+        }
+
+        [Authorize]
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var food = await _foodService.GetByIdAsync(id);
+
+            if (food == null)
             {
-                _context = context;
+                return NotFound();
             }
 
-            [Authorize]
-            [HttpGet]
-            public async Task<IActionResult> GetAll()
-            {
-                var foods = await _context.MenuItem
-                    .AsNoTracking()
-                    .Select(b => new { b.id, b.Food })
-                    .ToListAsync();
-
-                return Ok(foods);
-            }
-
-            [Authorize]
-            [HttpGet("{id:int}")]
-            public async Task<IActionResult> GetById(int id)
-            {
-                var food = await _context.MenuItem
-                    .AsNoTracking()
-                    .Where(b => b.id == id)
-                    .Select(b => new { b.id, b.Drink })
-                    .FirstOrDefaultAsync();
-
-                if (food == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(food);
-            }
+            return Ok(food);
         }
     }
 }

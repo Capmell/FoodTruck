@@ -1,31 +1,45 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
 using FoodTruck.ViewModels;
-using FoodTruck.Models;
+using FoodTruck.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FoodTruck.Controllers
 {
     public class MenuController : Controller
     {
-        private readonly FoodTruckContext _context;
-        public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult Menu()
-        {
-            var Foods = _context.MenuItem.ToList();
+        private readonly IFoodService _foodService;
 
-            var vm = new MenuItem
+        public MenuController(IFoodService foodservice)
+        {
+            _foodService = foodservice;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var menu = await _foodService.GetAllAsync();
+
+            var vm = new MenuItemViewModel
             {
-                Food = "available food",
-                Drink = "Available drinks",
-                id = Foods.Count,
-                EmptyMessage = "No items are currently available."
+                Menu = menu,
+                PageTitle = "Available Books",
+                TotalCount = menu.Count,
+                EmptyMessage = "No books are currently available."
             };
 
             return View(vm);
         }
-    
 
+        [Route("food/Info")]
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult Manage()
+        {
+            return View();
+        }
     }
 }

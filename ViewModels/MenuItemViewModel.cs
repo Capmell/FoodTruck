@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using FoodTruck.Models;
+using FoodTruck.DTOs;
 
 namespace FoodTruck.ViewModels
 {
-    public class MenuItemViewModel
+    public class MenuListViewModel
     {
-        public List<MenuItem> Menu { get; set; } = new();
-        public string PageTitle { get; set; } = "Menu Items";
+        public List<FoodListItem> Menu { get; set; } = new();
+        public string PageTitle { get; set; } = "Menu";
         public int TotalCount { get; set; }
-        public string EmptyMessage { get; set; } = "No items found.";
+        public string EmptyMessage { get; set; } = "No Items found.";
     }
 }

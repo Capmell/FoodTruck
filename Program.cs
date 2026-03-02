@@ -1,9 +1,11 @@
 
 
 using FoodTruck.Models;
-using Microsoft.EntityFrameworkCore;
+using FoodTruck.Services;
+using FoodTruck.Services.Interfaces;
 //using FoodTruck.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 //using FoodTruck.Data;
 namespace FoodTruck
 {
@@ -22,6 +24,8 @@ namespace FoodTruck
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<FoodTruckContext>();
 
             var app = builder.Build();
+
+            builder.Services.AddScoped<IFoodService, FoodService>();
 
             builder.Services.AddSwaggerGen(c =>
             {
