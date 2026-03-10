@@ -3,20 +3,20 @@
 *@
 <h1>Menu</h1>
 
-@if (Model == null || Model.Count == 0)
+@if (Model == null || Model.TotalCount == 0)
 {
     <p><em>No items found.</em></p>
 }
 else
 {
-    <ul>
+  @*   <ul>
         @foreach (var Menu in Model)
         {
             <li>
-                <strong>@Menu.Id</strong> by @Menu.Food — $@Menu.Drink
+                <strong>@Menu.Id</strong> by @Menu.Food — $@Menu.Drink - $@Menu.EmptyMessage
             </li>
         }
-    </ul>
+    </ul> *@
 }
 @{
 }

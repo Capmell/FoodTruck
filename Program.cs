@@ -23,8 +23,6 @@ namespace FoodTruck
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<FoodTruckContext>();
 
-            var app = builder.Build();
-
             builder.Services.AddScoped<IFoodService, FoodService>();
 
             builder.Services.AddSwaggerGen(c =>
@@ -36,6 +34,10 @@ namespace FoodTruck
                     apiDesc.RelativePath != null &&
                     apiDesc.RelativePath.StartsWith("api/", StringComparison.OrdinalIgnoreCase));
             });
+
+            var app = builder.Build();
+
+        
 
             if (app.Environment.IsDevelopment())
             {
@@ -65,6 +67,10 @@ namespace FoodTruck
             app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapControllerRoute(
+name: "default",
+pattern: "{controller=Menu}/{action=Index}/{id?}");
 
 
 

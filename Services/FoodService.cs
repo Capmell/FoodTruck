@@ -2,14 +2,13 @@
 using FoodTruck.DTOs;
 using FoodTruck.Models;
 using FoodTruck.Services.Interfaces;
-using FoodTruck.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodTruck.Services
 {
     public class FoodService : IFoodService
     {
-        private readonly FoodTruckContext _context;
+        public FoodTruckContext _context;
 
         public FoodService(FoodTruckContext context)
         {
